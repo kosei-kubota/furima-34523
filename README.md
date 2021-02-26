@@ -1,14 +1,14 @@
 ## users テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| name       | string     | null: false                    |
-| email      | string     | null: false                    |
-| password   | string     | null: false                    |
-| first_name | string     | null: false                    |
-| last_name  | string     | null: false                    |
-| birth      | datetime   | null: false                    |
-| purchase   | references | null: false, foreign_key: true |
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| name                 | string     | null: false                    |
+| email                | string     | null: false                    |
+| encrypted_password   | string     | null: false                    |
+| '苗字_フリガナ'        | string     | null: false                    |
+| '名前_フリガナ'        | string     | null: false                    |
+| birth                | date       | null: false                    |
+| purchase             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -17,17 +17,17 @@
 
 ##  items テーブル
 
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| item_name   | string     | null: false                    |
-| category    | string     | null: false                    |
-| price       | integer    | null: false                    |
-| description | text       | null: false                    |
-| condition   | text       | null: false                    |
-| burden      | string     | null: false                    |
-| country     | string     | null: false                    |
-| days        | string     | null: false                    |
-| user        | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| name         | string     | null: false                    |
+| category     | string     | null: false                    |
+| price        | integer    | null: false                    |
+| description  | text       | null: false                    |
+| condition_id | integer    | null: false                    |
+| burden_id    | integer    | null: false                    |
+| country_id   | integer    | null: false                    |
+| days_id      | integer    | null: false                    |
+| user         | references | null: false, foreign_key: true |
 
 ### Association
 
