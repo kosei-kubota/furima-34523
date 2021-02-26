@@ -2,7 +2,7 @@
 
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
-| name                 | string     | null: false                    |
+| nickname             | string     | null: false                    |
 | email                | string     | null: false, unique: true      |
 | encrypted_password   | string     | null: false                    |
 | first_name           | string     | null: false                    |
@@ -14,7 +14,7 @@
 ### Association
 
 - has_many :items
-- belongs_to :order
+- has_many :order
 
 ##  items テーブル
 
@@ -33,7 +33,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :shipping_address
+- has_one :order
 
 ## shipping_addresses テーブル
 
@@ -43,14 +43,14 @@
 | country_id       | integer    | null: false |
 | city             | string     | null: false |
 | address          | string     | null: false |
-| build            | string     | null: true  |
+| build            | string     |
 | phone_number     | string     | null: false |
 | order            | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :order
 
-## order テーブル
+## orders テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
@@ -59,6 +59,6 @@
 
 ### Association
 
-- belongs_to :shipping_address
+- has_one :shipping_address
 - belongs_to :user
 - belongs_to :item
