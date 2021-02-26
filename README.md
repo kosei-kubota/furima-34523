@@ -5,22 +5,23 @@
 | name                 | string     | null: false                    |
 | email                | string     | null: false                    |
 | encrypted_password   | string     | null: false                    |
-| '苗字_フリガナ'        | string     | null: false                    |
-| '名前_フリガナ'        | string     | null: false                    |
+| first_name           | string     | null: false                    |
+| last_name            | string     | null: false                    |
+| first_name_kana      | string     | null: false                    |
+| last_name_kana       | string     | null: false                    |
 | birth                | date       | null: false                    |
-| purchase             | references | null: false, foreign_key: true |
 
 ### Association
 
 - has_many :items
-- belongs_to :purchase
+- has_many :purchases
 
 ##  items テーブル
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | name         | string     | null: false                    |
-| category     | string     | null: false                    |
+| category_id  | integer    | null: false                    |
 | price        | integer    | null: false                    |
 | description  | text       | null: false                    |
 | condition_id | integer    | null: false                    |
