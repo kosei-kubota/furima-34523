@@ -40,15 +40,27 @@
 | Column           | Type       | Options     |
 | ---------------- | ---------- | ----------- |
 | postal           | integer    | null: false |
-| prefectures_id   | integer    | null: false |
+| country_id       | integer    | null: false |
 | city             | string     | null: false |
 | address          | string     | null: false |
 | build            | string     | null: true  |
-| phone_number     | integer    | null: false |
+| phone_number     | string     | null: false |
 | user             | references | null: false, foreign_key: true |
 | item             | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_many :items
+- has_many :item
+- belongs_to :user
+
+## order テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
 - belongs_to :user
