@@ -3,7 +3,7 @@
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
 | name                 | string     | null: false                    |
-| email                | string     | null: false                    |
+| email                | string     | null: false, unique: true      |
 | encrypted_password   | string     | null: false                    |
 | first_name           | string     | null: false                    |
 | last_name            | string     | null: false                    |
@@ -14,7 +14,7 @@
 ### Association
 
 - has_many :items
-- belongs_to :shipping_address
+- belongs_to :order
 
 ##  items テーブル
 
@@ -35,7 +35,7 @@
 - belongs_to :user
 - belongs_to :shipping_address
 
-## shipping_address テーブル
+## shipping_addresses テーブル
 
 | Column           | Type       | Options     |
 | ---------------- | ---------- | ----------- |
@@ -45,13 +45,10 @@
 | address          | string     | null: false |
 | build            | string     | null: true  |
 | phone_number     | string     | null: false |
-| user             | references | null: false, foreign_key: true |
-| item             | references | null: false, foreign_key: true |
+| order            | references | null: false, foreign_key: true |
 
 ### Association
-
-- has_many :item
-- belongs_to :user
+- belongs_to :order
 
 ## order テーブル
 
@@ -62,5 +59,6 @@
 
 ### Association
 
-- belongs_to :item
+- belongs_to :shipping_address
 - belongs_to :user
+- belongs_to :item
