@@ -14,7 +14,7 @@
 ### Association
 
 - has_many :items
-- has_many :order
+- has_many :orders
 
 ##  items テーブル
 
@@ -39,7 +39,7 @@
 
 | Column           | Type       | Options     |
 | ---------------- | ---------- | ----------- |
-| postal           | integer    | null: false |
+| postal           | string     | null: false |
 | country_id       | integer    | null: false |
 | city             | string     | null: false |
 | address          | string     | null: false |
