@@ -6,10 +6,16 @@ class User < ApplicationRecord
 
   validates :nickname,        presence: true
   validates :password,        presence: true, format: {with: /\A[a-z0-9]+\z/ }
-  validates :first_name,      presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/ }
-  validates :last_name,       presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/ }
-  validates :first_name_kana, presence: true, format: {with: /\A[ァ-ヶー－]+\z/ }
-  validates :last_name_kana,  presence: true, format: {with: /\A[ァ-ヶー－]+\z/ }
+  # 全角のひらがなor漢字を使用していないか検証
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々]/ } do
+    validates :first_name
+    validates :last_name
+  end
+  # 全角のカタカナを使用していないか検証
+  with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/ } do
+    validates :first_name_kana
+    validates :last_name_kana
+  end
   validates :birth,           presence: true
 
   has_many :items
