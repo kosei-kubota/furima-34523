@@ -12,8 +12,8 @@ RSpec.describe User, type: :model do
       end
   
       it 'passwordとpassword_confirmationが6文字以上であれば登録できる' do
-        @user.password = '000000'
-        @user.password_confirmation = '000000'
+        @user.password = '111aaaa'
+        @user.password_confirmation = '111aaaa'
         expect(@user).to be_valid
       end
     end
@@ -74,14 +74,14 @@ RSpec.describe User, type: :model do
         @user.password = 'abcdefg'
         @user.password_confirmation = 'abcdefg'
         @user.valid?
-        expect(@user.errors.full_messages).to include()
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
 
       it 'passwordは数字のみでは登録できない' do
         @user.password = '1234567'
         @user.password_confirmation = '1234567'
         @user.valid?
-        expect(@user.errors.full_messages).to include()
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
   
       it 'first_nameが空では登録できない' do
