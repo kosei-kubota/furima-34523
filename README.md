@@ -27,7 +27,7 @@
 | condition_id | integer    | null: false                    |
 | burden_id    | integer    | null: false                    |
 | country_id   | integer    | null: false                    |
-| days_id      | integer    | null: false                    |
+| day_id      | integer    | null: false                    |
 | user         | references | null: false, foreign_key: true |
 
 ### Association

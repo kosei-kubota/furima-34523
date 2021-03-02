@@ -1,17 +1,16 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
-  validates :name, presence: true
-  validates :category_id, presence: true
-  validates :price, presence: true
-  validates :description, presence: true
-  validates :condition_id, presence: true
-  validates :burden_id, presence: true
-  validates :country_id, presence: true
-  validates :user, presence: true
-  validates :image, presence: true
+  validates :name, :price, :description, :user, :image, presence: true
+
+  validates :category_id, :condition_id, :burden_id, :country_id, :day_id, numericality: { other_than: 1 }
 
   belongs_to :user
   has_one :order
   has_one_attached :image
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :burden
+  belongs_to :country
+  belongs_to :day
 end
