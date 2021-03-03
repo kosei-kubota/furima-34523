@@ -16,7 +16,7 @@ RSpec.describe Item, type: :model do
       it 'nameが空では登録できない' do
         @item.name = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include()
+        expect(@item.errors.full_messages).to include("Name can't be blank")
       end
   
       it 'priceが空では登録できない' do
@@ -28,7 +28,7 @@ RSpec.describe Item, type: :model do
       it 'descriptionが空では登録できない' do
         @item.description = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include()
+        expect(@item.errors.full_messages).to include("Description can't be blank")
       end
 
       it 'categoryが紐付いていないと保存できない' do
@@ -100,7 +100,7 @@ RSpec.describe Item, type: :model do
       it 'imageが空では登録できない' do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include()
+        expect(@item.errors.full_messages).to include("Image can't be blank")
       end
 
       it 'priceが¥300以内では保存できない' do
