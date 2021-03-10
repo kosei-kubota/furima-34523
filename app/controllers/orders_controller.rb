@@ -4,9 +4,6 @@ class OrdersController < ApplicationController
 
   def index
     @order_shipping_address = OrderShippingAddress.new
-    if current_user.id == @item.user_id || @item.order.present?
-      redirect_to root_path
-    end
   end
 
   def create
@@ -16,7 +13,6 @@ class OrdersController < ApplicationController
       @order_shipping_address.save
       return redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
   end
@@ -28,6 +24,9 @@ class OrdersController < ApplicationController
 
   def set_order
     @item = Item.find(params[:item_id])
+    if current_user.id == @item.user_id || @item.order.present?
+      redirect_to root_path
+    end
   end
 
   def pay_item
