@@ -39,12 +39,6 @@ RSpec.describe OrderShippingAddress, type: :model do
         expect(@order_shipping_address.errors.full_messages).to include("Token can't be blank")
       end
 
-      it 'tokenの情報が不正では保存できない' do
-        @order_shipping_address.token = 'tok_abcdefghijk0123456789'
-        @order_shipping_address.valid?
-        expect(@order_shipping_address.errors.full_messages).to include()
-      end
-
       it 'cityが空では保存できない' do
         @order_shipping_address.city = ''
         @order_shipping_address.valid?
