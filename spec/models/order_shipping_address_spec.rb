@@ -86,6 +86,12 @@ RSpec.describe OrderShippingAddress, type: :model do
         @order_shipping_address.valid?
         expect(@order_shipping_address.errors.full_messages).to include("Phone number is out of setting range")
       end
+
+      it 'phone_numberにハイフンが記述された場合は保存できない' do
+        @order_shipping_address.phone_number = '090-1234-5678'
+        @order_shipping_address.valid?
+        expect(@order_shipping_address.errors.full_messages).to include("Phone number is out of setting range")
+      end
     end
   end
 end
